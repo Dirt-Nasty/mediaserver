@@ -1,0 +1,28 @@
+version: '2'
+catalog:
+        name: Media Server
+        version: v0.0.1
+        questions:
+                - variable: USER_ID
+                  label: "Docker User ID"
+                  required: true
+                  default: 1001
+                  type: "int"
+                - variable: GROUP_ID
+                  label: "Docker Group ID"
+                  required: true
+                  default: 1001
+                  type: "int"
+                - variable: PLEX_TOKEN
+                  label: "Plex Claim Token"
+                  required: true
+                  type: "string"
+                - variable: VPN_USER
+                  label: "VPN Username"
+                  required: true
+                  type: "string"
+                - variable: VPN_PASS
+                  required: true
+                  type: "string"
+
+
