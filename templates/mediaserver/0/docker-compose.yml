@@ -98,6 +98,8 @@ services:
                 container_name: ombi
                 image: linuxserver/ombi
                 restart: unless-stopped
+                networks:
+                        - web
                 ports:
                         - "3579:3579"
                 environment:
@@ -110,3 +112,8 @@ services:
                         - "traefik.backend=ombi"
                         - "traefik.frontend.rule=Host:req.pwhqserve.me"
 
+
+networks:
+        web:
+                external:
+                        name: traefik_webgateway
