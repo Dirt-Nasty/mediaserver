@@ -106,4 +106,7 @@ services:
                 volumes:
                         - /etc/localtime:/etc/localtime:ro
                         - /opt/appdata/ombi/config:/config
+                labels:
+                        - "traefik.backend=ombi"
+                        - "traefik.frontend.rule=Host:req.pwhqserve.me"
 
