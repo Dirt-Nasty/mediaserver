@@ -110,7 +110,10 @@ services:
                         - /opt/appdata/ombi/config:/config
                 labels:
                         - "traefik.backend=ombi"
-                        - "traefik.frontend.rule=Host:req.pwhqserve.me"
+                        - "traefik.frontend.rule=Host:${OMBI_HOST}"
+                        - "traefik.enable=true"
+                        - "traefik.port=3579"
+
 
 
 networks:

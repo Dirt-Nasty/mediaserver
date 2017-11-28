@@ -25,5 +25,9 @@ catalog:
                   label: "VPN Password"
                   required: true
                   type: "string"
+                - variable: OMBI_HOST
+                  label: "OMBI Traefik Host"
+                  required: true
+                  type: "string"
 
 
