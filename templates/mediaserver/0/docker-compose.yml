@@ -44,7 +44,8 @@ services:
                 volumes:
                         - /etc/localtime:/etc/localtime:ro
                         - /opt/appdata/transmission/:/config
-                        - /mnt/storage/downloads:/downloads
+                        - /mnt/storage/downloads:/data/completed
+                        - /mnt/storage/incomplete:/data/incomplete
                 environment:
                         - OPENVPN_PROVIDER=PIA
                         - OPENVPN_CONFIG=Netherlands
@@ -52,6 +53,11 @@ services:
                         - OPENVPN_PASSWORD=${VPN_PASS}
                         - OPENVPN_OPTS=--inactive 3600 --ping 10 --ping-exit 60
                         - LOCAL_NETWORK=192.168.1.0/24
+                        - TRANSMISSION_HOME=/config
+                        - TRANSMISSION_SPEED_LIMIT_UP_ENABLED=true
+                        - TRANSMISSION_RATIO_LIMIT_ENABLED=true
+                        - TRANSMISSION_RATIO_LIMIT=1
+                        
         sonarr:
                 container_name: sonarr
                 image: linuxserver/sonarr:latest
