@@ -57,7 +57,7 @@ services:
                         - TRANSMISSION_SPEED_LIMIT_UP_ENABLED=true
                         - TRANSMISSION_RATIO_LIMIT_ENABLED=true
                         - TRANSMISSION_RATIO_LIMIT=1
-                        
+
         sonarr:
                 container_name: sonarr
                 image: linuxserver/sonarr:latest
@@ -67,7 +67,7 @@ services:
                         - /dev/rtc:/dev/rtc:ro
                         - /mnt/storage/sonarr/series/:/tv
                         - /opt/appdata/sonarr/:/config
-                        - /mnt/storage/downloads/:/downloads
+                        - /mnt/storage/downloads/:/data/completed
                 ports:
                         - 8989:8989
                 environment:
@@ -82,7 +82,7 @@ services:
                         - /dev/rtc:/dev/rtc:ro
                         - /mnt/storage/radarr/movies:/movies
                         - /opt/appdata/radarr/config:/config
-                        - /mnt/storage/downloads/:/downloads
+                        - /mnt/storage/downloads/:/data/completed
                 environment:
                         - PUID=${USER_ID}
                         - PGID=${GROUP_ID}
