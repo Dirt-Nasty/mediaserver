@@ -106,8 +106,9 @@ services:
                 restart: unless-stopped
                 networks:
                         - web
-                ports:
-                        - "3579:3579"
+                        - default
+                expose:
+                        - "3579"
                 environment:
                         - PUID=${USER_ID}
                         - PGID=${GROUP_ID}
@@ -116,13 +117,14 @@ services:
                         - /opt/appdata/ombi/config:/config
                 labels:
                         - "traefik.backend=ombi"
-                        - "traefik.frontend.rule=Host:${OMBI_HOST}"
+                        - "traefik.docker.network=web"
+                        - "traefik.frontend.rule=Host:req.pwhqserve.me"
                         - "traefik.enable=true"
                         - "traefik.port=3579"
+                        - "traefik.default.protocol=http"
 
 
 
 networks:
         web:
-                external:
-                        name: traefik_webgateway
+                external: true
